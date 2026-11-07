@@ -1,17 +1,40 @@
+/* AI Used, Model: Gemini (vylepšení designu a barev) */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: sans-serif;
-    background-color: #0F3922;
+    font-family: 'VT323', monospace;
+    background: radial-gradient(circle at center, #1a1e1a 0%, #050705 100%);
+    color: #b3b3b3;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 40px;
+    color: #a30000;
+    text-shadow: 2px 2px 0px #000;
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+}
+
+h2, h3 {
+    font-size: 20px;
+    color: #889288;
+    margin-bottom: 10px;
 }
 
 #board {
     display: grid;
     grid-template-columns: repeat(8, 60px);
     grid-template-rows: repeat(8, 60px);
-    border: 5px solid #3E3509;
-    margin-top: 20px;
+    border: 4px solid #111;
+    box-shadow: 0 0 0 4px #2a2520, 0 0 0 8px #151210, 0 20px 50px rgba(0,0,0,0.9);
+    background-color: #111;
+    gap: 1px;
 }
 
 .square {
@@ -20,14 +43,56 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 40px;
+    font-size: 42px;
     cursor: pointer;
+    user-select: none;
+    box-shadow: inset 2px 2px 5px rgba(255,255,255,0.05), inset -3px -3px 6px rgba(0,0,0,0.5);
+    transition: background-color 0.2s;
 }
 
-.light {
-    background-color: #f0d9b5;
+.light { background-color: #5a5f55; }
+.dark { background-color: #3b3e39; }
+
+
+
+.square[data-piece-color="white"] {
+    color: #e6d8ba;
+    text-shadow:
+            -1px -1px 0 #111,
+            1px -1px 0 #111,
+            -1px  1px 0 #111,
+            1px  1px 0 #111,
+            2px  3px 4px rgba(0,0,0,0.9);
 }
 
-.dark {
-    background-color: #b58863;
+.square[data-piece-color="black"] {
+    color: #151515;
+    text-shadow:
+            -1px -1px 0 #777,
+            1px -1px 0 #555,
+            -1px  1px 0 #777,
+            1px  1px 0 #555,
+            2px  3px 4px rgba(0,0,0,0.9);
+}
+
+.selected {
+    background-color: #4a3e2a !important;
+    box-shadow: inset 4px 4px 10px rgba(0,0,0,0.8) !important;
+}
+
+/**
+ * AI Generated
+ * Model: Gemini
+ * (Animace pulzování pro Kamikaze)
+ */
+
+.kamikaze-glow {
+    color: #ff1a1a !important;
+    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000 !important;
+    animation: rage-pulse 2s infinite alternate;
+}
+
+@keyframes rage-pulse {
+    0% { background-color: rgba(163, 0, 0, 0.1); box-shadow: inset 0 0 5px rgba(255,0,0,0.2); }
+    100% { background-color: rgba(163, 0, 0, 0.4); box-shadow: inset 0 0 15px rgba(255,0,0,0.6); }
 }
